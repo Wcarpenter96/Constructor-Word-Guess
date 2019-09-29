@@ -1,14 +1,13 @@
-var Letter = function(char,guess) {
+var Letter = function (char) {
     this.char = char;
-    this.guess = guess;
     this.guessed = false;
-  };
-  Letter.prototype.hasGuessed = function() {
-        if (this.guessed) return this.char;
-        else return '_';
-  };
-  Letter.prototype.checkGuess = function() {
-        if (this.guess === this.char) guessed = true;
-  };
-  module.exports = Letter;
-   
+};
+Letter.prototype.toString = function () {
+    if (this.guessed) return this.char;
+    else return '_';
+};
+Letter.prototype.checkLetter = function (guess) {
+    if (guess === this.char) this.guessed = true;
+};
+
+module.exports = Letter;
