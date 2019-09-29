@@ -35,7 +35,7 @@ var Hints = ["He made his professional debut as a member of saxophonist Charlie 
 
 var newRound = function () {
     console.log('');
-    var tries = 5;
+    var tries = 6;
     var randInt = Math.floor(Math.random() * wordChoice.length);
     word = new Word(wordChoice[randInt].toUpperCase());
     hint = Hints[randInt];
@@ -63,7 +63,11 @@ var newRound = function () {
                 }
             ]).then(function (answer) {
                 if (answer.playAgain) newRound();
-                else console.log('Thanks for playing!')
+                else {
+                    console.log('');
+                    console.log('Thanks for playing!')
+                    console.log('');
+                }
             });
         }
         if (hasWon()) {
@@ -86,11 +90,11 @@ var newRound = function () {
                 console.log(word.print());
                 console.log('');
                 if (word.checkWord(letter))
-                    console.log('CORRECT!')
+                    console.log(chalk.green('CORRECT!'));
                 else {
-                    console.log('INCORRECT!');
+                    console.log(chalk.red('INCORRECT!'));
                     tries--;
-                    console.log(`${tries} guesses remaining!`);
+                    console.log(chalk.rgb(123, 45, 67)(`${tries} guesses remaining!`));
                 }
                 Guess();
             });
@@ -99,6 +103,6 @@ var newRound = function () {
     Guess();
 }
 console.log('');
-console.log('Welcome to Name That Cat!');
+console.log(chalk.underline.inverse('Name That Cat!'));
 console.log('-------------------------');
 newRound();

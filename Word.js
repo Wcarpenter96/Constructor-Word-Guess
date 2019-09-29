@@ -20,6 +20,3 @@ Word.prototype.checkWord = function (guess) {
 };
 
 module.exports = Word;
-
-var world = new Word('hello world');
-console.log(world.checkWord('z'));
