@@ -1,4 +1,4 @@
-var Letter = require("./Letter");
+const Letter = require("./Letter.js");
 
 var Word = function (word) {
     this.word = word;
@@ -10,7 +10,16 @@ Word.prototype.print = function () {
     return this.letters.join(' ');
 };
 Word.prototype.checkWord = function (guess) {
-    this.letters.forEach(letter => letter.checkLetter(guess));
+    correct = false;
+    this.letters.forEach(letter => {
+        letter.checkLetter(guess);
+        if (letter.checkLetter(guess))
+            correct = true;
+    });
+    return correct;
 };
 
 module.exports = Word;
+
+var world = new Word('hello world');
+console.log(world.checkWord('z'));

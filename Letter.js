@@ -1,4 +1,4 @@
-var Letter = function (char) {
+const Letter = function (char) {
     this.char = char;
     this.guessed = false;
 };
@@ -7,7 +7,12 @@ Letter.prototype.toString = function () {
     else return '_';
 };
 Letter.prototype.checkLetter = function (guess) {
-    if (guess === this.char) this.guessed = true;
+    var correct = false;
+    if (guess === this.char) {
+        this.guessed = true;
+        correct = true;
+    }
+    return correct;
 };
 
 module.exports = Letter;
